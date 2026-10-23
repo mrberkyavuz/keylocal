@@ -8,7 +8,7 @@ An offline desktop password manager. Your logins, notes and other private detail
 
 ## Getting started
 
-Keylocal is currently **0.4.0 alpha**. Windows x64 has been tested locally. macOS builds are configured, but still need testing on real Macs.
+Keylocal is currently **0.4.2 alpha**. Windows x64 has been tested locally. macOS builds are configured, but still need testing on real Macs.
 
 There is no published installer release yet. You can [build from source](#build-from-source), or generate unsigned Windows and Mac packages with the **Run workflow** button under [Actions](https://github.com/mrberkyavuz/keylocal/actions/workflows/build.yml). Completed runs provide downloadable build artifacts. Published installers will appear under [Releases](https://github.com/mrberkyavuz/keylocal/releases).
 
@@ -23,6 +23,7 @@ Keep your master password somewhere safe. There is no password reset, and a fing
 ## Inside the app
 
 - **Six record types:** logins, secure notes, payment cards, identities, API credentials and Wi-Fi networks. Each supports the fields it needs, plus custom fields.
+- **Remembered vaults:** every vault you create or open stays in the scrollable vault list on both the home and unlock screens. Missing files stay listed with an unavailable indicator.
 - **Organization:** groups, tags, favorites, search, sorting, archive and trash.
 - **Password tools:** random passwords, memorable passphrases and local checks for weak or reused passwords.
 - **Automatic locking:** idle timeout, computer lock and sleep. Copied secrets are cleared from the clipboard after a configurable timeout.

@@ -2188,3 +2188,49 @@ button[aria-busy="true"] {
   border-radius: 8px;
   color: var(--muted);
 }
+
+/* Keep remembered vaults visible on both the home and unlock screens. */
+.onboarding {
+  height: calc(100vh - 48px);
+  min-height: 0;
+}
+.onboarding-form {
+  min-height: 0;
+  overflow-y: auto;
+  align-items: safe center;
+  scrollbar-width: thin;
+}
+.setup-symbol[hidden] {
+  display: none;
+}
+.setup-box .recent-vaults {
+  margin-bottom: 24px;
+}
+.setup-box .recent-vaults h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.recent-vaults > p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.recent-vault-list {
+  max-height: 172px;
+  overflow-y: auto;
+  padding: 3px;
+  margin: 0 -3px;
+  scrollbar-width: thin;
+}
+.recent-vault-list .recent-vault {
+  margin-bottom: 7px;
+  width: 100%;
+  min-height: 58px;
+}
+.recent-vault.current {
+  border-color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 12%, var(--input));
+}
+.recent-vault strong {
+  font-size: 13px;
+}

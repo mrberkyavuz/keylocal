@@ -123,14 +123,12 @@ class VaultService {
           this.path,
           ...(Array.isArray(v.recentVaults) ? v.recentVaults : []),
         ]),
-      ]
-        .filter(
-          (file) =>
-            typeof file === "string" &&
-            file.length <= 4096 &&
-            path.isAbsolute(file),
-        )
-        .slice(0, 20);
+      ].filter(
+        (file) =>
+          typeof file === "string" &&
+          file.length <= 4096 &&
+          path.isAbsolute(file),
+      );
       try {
         this.applySettings(v.settings || {});
       } catch {
@@ -150,7 +148,7 @@ class VaultService {
       this.recentVaults = [
         this.path,
         ...this.recentVaults.filter((file) => file !== this.path),
-      ].slice(0, 20);
+      ];
     atomicWrite(
       path.join(this.dataDir, "settings.json"),
       Buffer.from(

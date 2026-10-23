@@ -834,54 +834,60 @@ export default function App() {
           </div>
           <main className="onboarding-form">
             <div className="setup-box">
+              {screen !== "create" && status.recentVaults?.length > 0 && (
+                <section
+                  className="recent-vaults"
+                  aria-label={t("Recent vaults")}
+                >
+                  <h2>{t("Your vaults")}</h2>
+                  <p>
+                    {t(
+                      "Choose a vault to unlock. Your files stay on this device.",
+                    )}
+                  </p>
+                  <div className="recent-vault-list">
+                    {status.recentVaults.map((recent) => (
+                      <button
+                        key={recent.path}
+                        className={`secondary full recent-vault ${status.vaultPath === recent.path ? "current" : ""}`}
+                        aria-current={
+                          status.vaultPath === recent.path ? "true" : undefined
+                        }
+                        disabled={busy || !recent.available}
+                        title={recent.path}
+                        onClick={() =>
+                          perform(async () => {
+                            const s = await api.selectRecentVault(recent.path);
+                            setStatus(s);
+                            setMaster("");
+                            setUseMaster(false);
+                            setScreen("unlock");
+                          })
+                        }
+                      >
+                        <LockKeyhole size={20} />
+                        <span>
+                          <strong>{recent.name}</strong>
+                          <small>
+                            {recent.available
+                              ? t("Stored locally")
+                              : t("File unavailable")}
+                          </small>
+                        </span>
+                        <ArrowRight size={17} />
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              )}
               {screen === "welcome" ? (
                 <>
-                  <span className="setup-symbol">
+                  <span
+                    className="setup-symbol"
+                    hidden={Boolean(status.recentVaults?.length)}
+                  >
                     <KeyRound size={30} />
                   </span>
-                  {status.recentVaults?.length > 0 && (
-                    <section
-                      className="recent-vaults"
-                      aria-label={t("Recent vaults")}
-                    >
-                      <h2>{t("Your vaults")}</h2>
-                      <p>
-                        {t(
-                          "Choose a vault to unlock. Your files stay on this device.",
-                        )}
-                      </p>
-                      {status.recentVaults.map((recent) => (
-                        <button
-                          key={recent.path}
-                          className="secondary full recent-vault"
-                          disabled={busy || !recent.available}
-                          title={recent.path}
-                          onClick={() =>
-                            perform(async () => {
-                              const s = await api.selectRecentVault(
-                                recent.path,
-                              );
-                              setStatus(s);
-                              setMaster("");
-                              setUseMaster(false);
-                              setScreen("unlock");
-                            })
-                          }
-                        >
-                          <LockKeyhole size={20} />
-                          <span>
-                            <strong>{recent.name}</strong>
-                            <small>
-                              {recent.available
-                                ? t("Stored locally")
-                                : t("File unavailable")}
-                            </small>
-                          </span>
-                          <ArrowRight size={17} />
-                        </button>
-                      ))}
-                    </section>
-                  )}
                   <h2>{t("Your vault stays on your device.")}</h2>
                   <p>
                     {t(

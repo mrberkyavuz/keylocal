@@ -1,7 +1,7 @@
 {
   "name": "keylocal",
   "productName": "Keylocal",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "An offline KeePass-compatible personal vault",
   "author": "Keylocal contributors",
   "license": "MIT",

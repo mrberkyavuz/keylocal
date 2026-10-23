@@ -1,6 +1,6 @@
 # Security model
 
-Keylocal 0.4.0 is an unaudited alpha. Report a suspected issue privately to the repository maintainer using GitHub private vulnerability reporting when enabled. Do not include real passwords, vault files or recovery information in a public issue.
+Keylocal 0.4.2 is an unaudited alpha. Report a suspected issue privately to the repository maintainer using GitHub private vulnerability reporting when enabled. Do not include real passwords, vault files or recovery information in a public issue.
 
 ## What is protected
 

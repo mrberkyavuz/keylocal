@@ -87,3 +87,13 @@ A real Electron IPC regression test reproduced the structured-clone error before
 A focused Electron UI test passed fresh-install recovery into a new file, wrong-password feedback and password-field clearing, verification before any output file, byte-identical restored/source files, non-mutating checks while another vault is open, backup status, a 900×640 recovery modal, English/Turkish privacy guidance, lock cleanup and exported diagnostics matching the visible preview. The diagnostics JSON contains only application/runtime/OS versions and platform/architecture, not vault contents, passwords, file paths, device identifiers or logs. Synthetic screenshots were reviewed. TypeScript and Vite checks passed.
 
 The local Windows installer remains an unsigned alpha. Real Mac hardware/signing validation and independently reviewed public distribution remain outstanding. No public-release, Mac hardware or improved physical Hello latency claim is made by these tests.
+
+## 0.4.1 remembered vault visibility
+
+Remembered vault cards now appear on both the home and unlock screens, with the current file highlighted. The remembered list has its own bounded scroll area; the unlock form scrolls safely at smaller window sizes. Preference paths and vault contents are unchanged. The focused Electron test checks a visible card on the 900×640 unlock screen, direct selection with native file dialogs disabled, home-screen selection and persistence after restart.
+
+## 0.4.2 complete remembered-vault list
+
+The remembered list no longer truncates history to 20 files. A focused Electron check exercises 26 remembered paths, scrolling to select the last available vault without a file dialog, a disabled missing-file card, home/unlock visibility at 900×640 and full retention after restarting. This remembers explicitly opened or created files; it does not scan the computer for other vaults.
+
+TypeScript and the Vite production build passed. All 50 Node tests and the focused remembered-vault Electron test passed on Windows. The Node tests required running outside the restricted sandbox because its temporary filesystem rejects the hard links used for atomic no-overwrite writes.
